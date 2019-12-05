@@ -1,0 +1,38 @@
+package com.mts.cdc.authenticationservice.utility;
+
+
+import com.mts.cdc.authenticationservice.payload.ResponseWrapper;
+import com.mts.cdc.authenticationservice.repository.UserRepository;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@Getter
+@Setter
+@Slf4j
+public class Utility {
+
+    private String message;
+    private Object data;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    public Utility(String message, Object data){
+        this.message = message;
+        this.data = data;
+
+    }
+
+    public Utility(){}
+
+    public ResponseWrapper getResponseData(){
+        return new ResponseWrapper(this.message, this.data);
+    }
+
+
+}
